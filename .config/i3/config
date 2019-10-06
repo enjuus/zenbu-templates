@@ -1,0 +1,160 @@
+Set $mod Mod4
+
+#font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
+new_window pixel 3
+focus_follows_mouse  no
+
+#don't move to neighbouring screen with hjkl
+force_focus_wrapping yes
+
+set $gray2 {{ fgc }}
+set $gray1 {{ bgc }}
+
+client.focused            $gray1   $gray2   $gray1   $gray2
+client.focused_inactive   $gray2   $gray1   $gray2   $gray1
+client.unfocused          $gray2   $gray1   $gray2   $gray1
+client.urgent             $gray1    $gray2  $gray1    $gray2
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec kitty
+
+# kill focused window
+bindsym $mod+c kill
+
+# start rofi in run mode
+bindsym $mod+p exec rofi -show run -location 1 -xoffset 500 -yoffset -3
+# start rofi in window mode
+bindsym $mod+Shift+p exec rofi -show window  -location 1 -xoffset 500 -yoffset -3
+# screen lock
+bindsym Control+$mod+l exec ~/script/snippets/locks.sh
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+g split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (tabbed, toggle split)
+bindsym $mod+n layout tabbed
+bindsym $mod+m layout toggle split
+
+# container navigation
+bindsym $mod+d focus parent
+bindsym $mod+b focus child
+
+# move container between displays
+bindsym $mod+semicolon move workspace to output right
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to last workspace
+bindsym $mod+6 workspace back_and_forth
+
+# switch to workspace
+bindsym $mod+q workspace 1
+bindsym $mod+w workspace 2
+bindsym $mod+e workspace 3
+bindsym $mod+r workspace 4
+bindsym $mod+t workspace 5
+
+# move focused container to workspace
+bindsym $mod+Shift+q move container to workspace 1
+bindsym $mod+Shift+w move container to workspace 2
+bindsym $mod+Shift+e move container to workspace 3
+bindsym $mod+Shift+r move container to workspace 4
+bindsym $mod+Shift+t move container to workspace 5
+
+bindsym $mod+z reload
+bindsym $mod+Shift+x restart
+bindsym $mod+Shift+z exit
+
+mode "resize" {
+        bindsym h   resize shrink width 10 px or 10 ppt
+        bindsym j   resize grow height 10 px or 10 ppt
+        bindsym k   resize shrink height 10 px or 10 ppt
+        bindsym l   resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or q or ^[
+        bindsym Return mode "default"
+        bindsym q mode "default"
+        bindsym Escape mode "default"
+        bindcode Control+34 mode "default"
+}
+
+bindsym $mod+s mode "resize"
+
+mode "gaps" {
+     bindsym 2 gaps inner current plus 5
+     bindsym 3 gaps inner current minus 5
+     bindsym 0 gaps inner current set {{ outer }}
+     bindsym 9 gaps outer current plus 5
+     bindsym 8 gaps outer current minus 5
+     bindsym 7 gaps outer current set {{ inner }}
+     bindsym 6 gaps inner current set 0
+     bindsym 5 gaps outer current set 0
+
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+g mode "Gaps"
+
+# multimedia keys
+bindsym XF86AudioRaiseVolume exec "/home/skr0tm/.notifications/volume --up"
+bindsym XF86AudioLowerVolume exec "/home/skr0tm/.notifications/volume --down"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
+bindsym XF86AudioPlay exec "mpc toggle"
+bindsym XF86AudioStop exec "mpc stop"
+bindsym XF86AudioNext exec "mpc next"
+bindsym XF86AudioPrev exec "mpc prev"
+
+bindsym XF86KbdBrightnessDown exec "sudo /opt/kbdlight/bin/kbdlight -"
+bindsym XF86KbdBrightnessUp exec "sudo /opt/kbdlight/bin/kbdlight +"
+bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
+
+bindsym XF86Display exec "arandr"
+
+bindsym $mod+a exec "urxvt -e alsamixer"
+bindsym $mod+Shift+a exec "pavucontrol"
+
+bindsym $mod+Shift+d exec "killall ffmpeg"
+bindsym $mod+Shift+s exec "~/script/snippets/screencast.sh"
+
+bindsym $mod+Shift+u exec "~/.notifications/launcher --all"
+bindsym $mod+o exec "~/.notifications/launcher --music"
+bindsym $mod+Shift+o exec "~/.admiral/popups/music/launcher"
+bindsym $mod+u exec "~/.notifications/launcher --clock"
+bindsym $mod+y exec "~/.notifications/launcher --battery"
+bindsym $mod+i exec "~/.notifications/launcher --volume"
+
+bindsym $mod+0 exec "pomf"
+
+exec_always --no-startup-id feh --bg-fill {{ wallpaper }}
+
+exec_always --no-startup-id killall admiral
+exec_always --no-startup-id ~/.notifications/admiral.sh &
+

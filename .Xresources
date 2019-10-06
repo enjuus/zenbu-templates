@@ -1,0 +1,122 @@
+! vim: set filetype=xdefaults :
+
+URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard
+! special
+*.borderColor:  {{ bgc }}
+*.background:   {{ bgc }}
+*.foreground:   {{ fgc }}
+*.cursorColor:  {{ csc }}
+
+! Black
+*color0:       {{ n_black }}
+*color8:       {{ b_black }}
+
+! Red
+*color1:       {{ n_red }}
+*color9:       {{ b_red }}
+
+! Green
+*color2:       {{ n_green }}
+*color10:      {{ b_green }}
+
+! Yellow
+*color3:       {{ n_yellow }}
+*color11:      {{ b_yellow }}
+
+! Blue
+*color4:       {{ n_blue }}
+*color12:      {{ b_blue }}
+
+! Magenta
+*color5:       {{ n_magenta }}
+*color13:      {{ b_magenta }}
+
+! Cyan
+*color6:       {{ n_cyan }}
+*color14:      {{ b_cyan }}
+
+! White
+*color7:       {{ n_white }}
+*color15: {{ b_white }}
+
+twobwm.border_width: 2
+twobwm.outer_border: 0
+twobwm.focus_color: {{ fgc }}
+twobwm.unfocus_color: {{ bgc }}
+twobwm.fixed_color: {{ n_blue }}
+twobwm.unkill_color: {{ n_cyan }}
+twobwm.outer_border_color: {{ bgc }}
+twobwm.fixed_unkill_color: {{ n_magenta }}
+twobwm.inverted_colors: false
+twobwm.enable_compton: true
+
+URxvt.boldFont:
+! ROFI COLORS
+rofi.color-window:    {{ bgc }} , {{ bgc }} , {{ bgc }} , {{ bgc }} , {{ fgc }}
+rofi.color-normal:    {{ bgc }} , {{ fgc }} , {{ bgc }} , {{ bgc }} , {{ fgc }}
+rofi.color-active:    {{ fgc }} , {{ fgc }} , {{ bgc }} , {{ fgc }} , {{ bgc }}
+rofi.color-urgent:    {{ bgc }} , {{ fgc }} , {{ bgc }} , {{ bgc }} , {{ fgc }}
+
+rofi.fake-transparency : true
+rofi.font              : Pragmata Pro 11
+rofi.columns           : 1
+rofi.separator-style   : none
+rofi.hide-scrollbar    : true
+rofi.location          : 1
+rofi.yoffset           : 48
+rofi.xoffset           : 48
+rofi.padding           : 32
+rofi.fullscreen        : false
+rofi.width             : 300
+rofi.terminal			: kitty
+rofi.lines : 6
+
+URxvt.keysym.M-x           : perl:keyboard-select:activate
+URxvt.keysym.M-u           : perl:url-select:select_next
+URxvt.keysym.M-c           : perl:clipboard:copy
+URxvt.keysym.M-v           : perl:clipboard:paste
+URxvt.keysym.M-s           : perl:keyboard-select:search
+URxvt.keysym.M-C-v         : perl:clipboard:paste_escaped
+URxvt.url-select.launcher  : vivaldi-stable
+URxvt.url-select.autocopy  : true
+URxvt.url-select.underline : true
+URxvt.internalBorder:  15
+
+!URxvt.font        : -*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1
+!URxvt.font         : -gohu-gohufont-medium-r-normal-*-11-80-100-100-c-60-*-*
+!URxvt.font         : -windows-dina-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt.font         : -nerdypepper-scientifica-medium-r-normal-*-11-80-100-100-c-50-iso10646-1
+!URxvt.font        : -lucy-tewi-medium-r-normal-*-11-*-*-*-*-*-*-*
+URxvt.font        : xft:Pragmata Pro:pixelsize=11:antialias=True
+URxvt.termName    : rxvt-256color
+URxvt.iso14755    : false
+!URxvt.letterSpace : -5
+
+URxvt.urgentOnBell: true
+
+URxvt.saveLines   : 12000
+URxvt.scrollBar   : false
+URxvt.scrollstyle : rxvt
+URxvt.geometry    : 45x15
+
+! XFT
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintslight
+Xft.hinting   : true
+Xft.antialias : true
+Xft.rgba      : rgb
+
+!Fading
+URxvt.fading    : 0
+URxvt*modifier: alt
+! URxvt.depth: 32
+
+
+rofi.sidebar-mode: true
+rofi.seperator-style: true
+rofi.hide-sidebar: true
+rofi.kb-mode-next: Alt+l
+rofi.kb-mode-previous: Alt+h
+rofi.kb-row-up: Alt+k
+rofi.kb-row-down: Alt+j
+

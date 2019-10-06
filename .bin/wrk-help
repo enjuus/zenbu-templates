@@ -1,0 +1,27 @@
+#!/bin/env fish
+
+set total (wrk -t)
+set highlight "%{F{{ n_red }} }"
+set resetColor "%{F{{ fgc }} }"
+set bg "%{B{{ bgc }} }"
+set transparent "%{B#00FFFFFF}"
+
+function wrk-names
+  echo 1-x\n2-x\n3-x\n4-x\n5-x\n6-x\n7-x\n8-x
+end
+set names (wrk-names)
+wrk -w | while read num
+  set out $bg
+  for c in $names
+    set d (echo $c | cut -d- -f2)
+    set c (echo $c | cut -d- -f1)
+    if test $num -eq $c
+      set out (echo $out $highlight)
+    else
+      set out (echo $out $resetColor)
+    end
+    set out (echo $out $d)
+  end
+  set out (echo $out$resetColor)
+  echo $out
+end

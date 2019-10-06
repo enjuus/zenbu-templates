@@ -1,0 +1,15 @@
+#!/bin/fish
+
+set highlight "%{F{{ n_red }} }"
+set resetColor "%{F#2e2e2e }"
+set bg "%{B{{ fgc }} }"
+set transparent "%{B#00FFFFFF}"
+
+set current (mpc current)
+set string "$bg%{A:fish $HOME/.smol/popups/msc/cover &:} "     $current      "%{A}$transparent"
+echo $string
+mpc idleloop | while read player
+  set current (mpc current)
+  set string "$bg%{A:fish $HOME/.smol/popups/msc/cover &:} "     $current    "%{A}$transparent"
+  echo $string
+end
