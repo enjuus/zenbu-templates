@@ -58,7 +58,7 @@ rofi.color-active:    {{ fgc }} , {{ fgc }} , {{ bgc }} , {{ fgc }} , {{ bgc }}
 rofi.color-urgent:    {{ bgc }} , {{ fgc }} , {{ bgc }} , {{ bgc }} , {{ fgc }}
 
 rofi.fake-transparency : true
-rofi.font              : Pragmata Pro 11
+rofi.font              : IBM Plex Mono 11
 rofi.columns           : 1
 rofi.separator-style   : none
 rofi.hide-scrollbar    : true
@@ -87,7 +87,7 @@ URxvt.internalBorder:  15
 !URxvt.font         : -windows-dina-medium-r-normal-*-12-*-*-*-*-*-*-*
 !URxvt.font         : -nerdypepper-scientifica-medium-r-normal-*-11-80-100-100-c-50-iso10646-1
 !URxvt.font        : -lucy-tewi-medium-r-normal-*-11-*-*-*-*-*-*-*
-URxvt.font        : xft:Pragmata Pro:pixelsize=11:antialias=True
+URxvt.font        : xft:IBM Plex Mono:pixelsize=14:antialias=True
 URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
 !URxvt.letterSpace : -5
@@ -97,7 +97,7 @@ URxvt.urgentOnBell: true
 URxvt.saveLines   : 12000
 URxvt.scrollBar   : false
 URxvt.scrollstyle : rxvt
-URxvt.geometry    : 45x15
+URxvt.geometry    : 60x20
 
 ! XFT
 Xft.lcdfilter : lcddefault
