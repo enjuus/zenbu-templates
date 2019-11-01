@@ -5,7 +5,7 @@
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
  *2)mouse slow       3)mouse fast     */
-static const uint16_t movements[] = {20,40,15,400};
+static const uint16_t movements[] = {30,60,15,400};
 /* resize by line like in mcwm -- jmbi */
 static const bool     resize_by_line          = true;
 /* the ratio used when resizing and keeping the aspect */
@@ -13,7 +13,7 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,0,0,0};
+static const uint8_t offsets[] = {0,35,0,35};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
@@ -125,10 +125,10 @@ static key keys[] = {
     // Resize while keeping the window aspect
     {  MOD ,              XK_Home,       resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_GROW}},
     {  MOD ,              XK_End,        resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_SHRINK}},
-    // Full screen window without borders
-    {  MOD ,              XK_x,         maximize,          {.i=TWOBWM_FULLSCREEN}},
-    //Full screen window without borders overiding offsets
-    {  MOD |SHIFT ,       XK_x,          maximize,          {.i=TWOBWM_FULLSCREEN_OVERRIDE_OFFSETS}},
+    // Maximize (ignore offset and no EWMH atom)
+    {  MOD ,              XK_x,          maximize,          {}},
+    // Full screen (disregarding offsets and adding EWMH atom)
+    {  MOD |SHIFT ,       XK_x,          fullscreen,        {}},
     // Maximize vertically
     {  MOD ,              XK_m,          maxvert_hor,       {.i=TWOBWM_MAXIMIZE_VERTICALLY}},
     // Maximize horizontally
@@ -162,7 +162,7 @@ static key keys[] = {
     {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
     {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
     // Iconify the window
-    //{  MOD ,              XK_i,          hide,              {}},
+    {  MOD ,              XK_i,          hide,              {}},
     // Make the window unkillable
     {  MOD ,              XK_a,          unkillable,        {}},
     // Make the window appear always on top

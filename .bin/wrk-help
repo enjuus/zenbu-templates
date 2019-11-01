@@ -7,7 +7,7 @@ set bg "%{B{{ bgc }} }"
 set transparent "%{B#00FFFFFF}"
 
 function wrk-names
-  echo 1-x\n2-x\n3-x\n4-x\n5-x\n6-x\n7-x\n8-x
+  echo 1-\n2-\n3-\n4-\n5-\n6-\n7-\n8-
 end
 set names (wrk-names)
 wrk -w | while read num
